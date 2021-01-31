@@ -23,7 +23,7 @@ def GetUrl(number):
             for d in data:
                 if i == 1:
                     for item in d.find_all('a'):
-                        if item.get('rel') and item.string != item.get('href') and not item.get('title'):
+                        if item.get('rel') and item.string != item.get('href') and item.string != '福利吧':
                             video_number += 1
                             video_list.append({
                                 'number': video_number,
