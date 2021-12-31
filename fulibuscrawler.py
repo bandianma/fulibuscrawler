@@ -11,12 +11,12 @@ def GetUrl(number):
     video_number = 0
     i = 1
     try:
-        response = requests.get('https://fulibus.net/{}.html'.format(number))
+        response = requests.get('https://fulibus2021.net/{}.html'.format(number))
         soup = BeautifulSoup(response.content, 'lxml')
         page = len(soup.find('div', attrs={'class': 'article-paging'}).find_all('a')) + 2
         for i in range(1,page):
             if i != 1:
-                response = requests.get('https://fulibus.net/{}.html/{}'.format(number,i))
+                response = requests.get('https://fulibus2021.net/{}.html/{}'.format(number,i))
                 soup = BeautifulSoup(response.content, 'lxml')
             data = soup.find_all('p')
             img_number = 0
@@ -39,7 +39,7 @@ def GetUrl(number):
                 dict['{}'.format(number)] = video_list
     except requests.exceptions.RequestException as e:
         print(e)
-        print('{0}期网站无法加载，链接：https://fulibus.net/{0}.html/{1}'.format(number, i))
+        print('{0}期网站无法加载，链接：https://fulibus2021.net/{0}.html/{1}'.format(number, i))
     return dict
 
 def GetData(route_url,data):
